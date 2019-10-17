@@ -5,6 +5,14 @@
 
 using namespace sf;
 
+//function declaration
+void updateBranches(int seed);
+const int NUM_BRANCHES = 6;
+Sprite branches[NUM_BRANCHES];
+
+enum class side { LEFT, RIGHT, NONE };
+side branchPositions[NUM_BRANCHES];
+
 int main() {
 	//create a video mode object
 	sf::VideoMode vm(1900, 1080);
@@ -118,6 +126,18 @@ int main() {
 		textRect.height / 2.0f);
 	messageText.setPosition(1920 / 2.0f, 1080 / 2.0f);
 	scoreText.setPosition(20, 20);
+
+	//Prepare 6 branches
+	Texture textureBranch;
+	textureBranch.loadFromFile("graphics/branch.png");
+
+	for (int i = 0; i < NUM_BRANCHES; i++) {
+		branches[i].setTexture(textureBranch);
+		branches[i].setPosition(-2000, -2000);
+		//Set the sprite's origin to dead centre
+		//We can then spin it round without changing its position
+		branches[i].setOrigin(220, 20);
+	}
 
 	while (window.isOpen()) {
 		//Handle the players input
@@ -242,6 +262,23 @@ int main() {
 			std::stringstream ss;
 			ss << "Score = " << score;
 			scoreText.setString(ss.str());
+
+			for (int i = 0; i < NUM_BRANCHES; i++) {
+				float height = i * 150;
+				if (branchPositions[i] == side::LEFT) {
+					//Move sprite to left side
+					branches[i].setPosition(610, height);
+					branches[i].setRotation(180);
+				}
+				else if (branchPositions[i] == side::RIGHT) {
+					branches[i].setPosition(1330, height);
+					branches[i].setRotation(0);
+				}
+				else {
+					//hide the branch
+					branches[i].setPosition(3000, height);
+				}
+			}
 		}
 
 		//Draw the scene
