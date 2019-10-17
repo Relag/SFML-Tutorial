@@ -294,6 +294,10 @@ int main() {
 		window.draw(spriteCloud2);
 		window.draw(spriteCloud3);
 
+		for (int i = 0; i < NUM_BRANCHES; i++) {
+			window.draw(branches[i]);
+		}
+
 		window.draw(spriteTree);
 
 		window.draw(spriteBee);
@@ -313,5 +317,24 @@ int main() {
 
 
 	return 0;
+}
 
+void updateBranches(int seed) {
+	for (int j = NUM_BRANCHES - 1; j > 0; j--) {
+		branchPositions[j] = branchPositions[j - 1];
+	}
+
+	srand((int)time(0) + seed);
+	int r = (rand() % 5);
+	switch (r) {
+	case 0:
+		branchPositions[0] = side::LEFT;
+		break;
+	case 1:
+		branchPositions[0] = side::RIGHT;
+		break;
+	default:
+		branchPositions[0] = side::NONE;
+		break;
+	}
 }
