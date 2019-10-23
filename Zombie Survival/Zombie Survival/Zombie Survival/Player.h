@@ -43,6 +43,8 @@ public:
 
 	Vector2f GetCentre();
 
+	Time GetLastHitTime();
+
 	float GetRotation();
 
 	Sprite GetSprite();
