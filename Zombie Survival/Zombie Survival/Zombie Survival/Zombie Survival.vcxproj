@@ -155,7 +155,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="SFML.cpp" />
+    <ClCompile Include="ZombieSurvival.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Player.h" />
