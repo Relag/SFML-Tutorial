@@ -39,11 +39,11 @@ public:
 
 	bool Hit(Time timeHit);
 
+	Time GetLastHitTime();
+
 	FloatRect GetPosition();
 
 	Vector2f GetCentre();
-
-	Time GetLastHitTime();
 
 	float GetRotation();
 
