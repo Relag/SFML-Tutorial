@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "Player.h"
+#include "ZombieSurvival.h"
 
 using namespace sf;
 
@@ -32,6 +33,13 @@ int main() {
 
 	IntRect arena;
 
+	//Create the backgroundVertexArray background
+	//Load the texture for the background
+	Texture textureBackground;
+	textureBackground.loadFromFile("graphics/background_sheet.png");
+
+	VertexArray background;
+
 	//Main Game Loop
 	while (window.isOpen()) {
 		//Handle ievents by polling
@@ -55,7 +63,7 @@ int main() {
 				}
 			}
 		}
-		//Hanld the player quitting
+		//Handle the player quitting
 		if (Keyboard::isKeyPressed(Keyboard::Escape)) {
 			window.close();
 		}
@@ -115,7 +123,8 @@ int main() {
 				arena.left = 0;
 				arena.top = 0;
 
-				int tileSize = 50;
+				//Pass the vetex array by reference
+				int tileSize = createBackground(background, arena);
 
 				player.Spawn(arena, resolution, tileSize);
 
@@ -143,9 +152,15 @@ int main() {
 			mainView.setCenter(player.GetCentre());
 		}//End Update
 		
+
+		//Draw the scene
 		if (state == State::PLAYING) {
 			window.clear();
 			window.setView(mainView);
+
+			//Takes a vertex array, and draws the background according
+			//to the coordinates of each vertice.
+			window.draw(background, &textureBackground);
 
 			window.draw(player.GetSprite());
 		}
@@ -157,9 +172,9 @@ int main() {
 
 		}
 		if (state == State::GAME_OVER) {
-			window.display();
+			
 		}
-
+		window.display();
 	}//End game loop.
 	return 0;
 }
