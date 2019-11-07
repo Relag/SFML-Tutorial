@@ -13,6 +13,7 @@ private:
 	//Map container holding related string and texture pairs
 	std::map<std::string, Texture> m_Textures;
 	static TextureHolder* m_s_Instance;
+	
 
 public:
 	TextureHolder();

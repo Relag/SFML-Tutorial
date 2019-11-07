@@ -45,6 +45,7 @@ bool Player::Hit(Time timeHit) {
 	else {
 		return false;
 	}
+	
 }
 
 FloatRect Player::GetPosition(){
