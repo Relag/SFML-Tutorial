@@ -5,7 +5,7 @@ void Engine::draw() {
 
 	if (!m_SplitScreen) {
 		//Single-player view
-		m_Window.setView(m_BGMainView);
+m_Window.setView(m_BGMainView);
 		m_Window.draw(m_BackgroundSprite);
 		m_Window.setView(m_MainView);
 	}
@@ -18,9 +18,9 @@ void Engine::draw() {
 		m_Window.setView(m_BGRightView);
 		m_Window.draw(m_BackgroundSprite);
 		m_Window.setView(m_RightView);
-
-		//Draw hud
-		m_Window.setView(m_HudView);
-		m_Window.display();
 	}
+		//Draw hud
+	m_Window.setView(m_HudView);
+	m_Window.display();
+	
 }
