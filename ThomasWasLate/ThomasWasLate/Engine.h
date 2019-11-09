@@ -41,7 +41,7 @@ private:
 	bool m_SplitScreen = false;
 
 	//Time remaining
-	float m_Timeremaining = 10;
+	float m_Timeremaining;
 	Time m_GameTimeTotal;
 
 	// Is it time for a new level?

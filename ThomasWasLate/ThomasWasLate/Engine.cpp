@@ -10,8 +10,9 @@ Engine::Engine() {
 	m_Window.create(VideoMode(resolution.x, resolution.y),
 		"Thomas was Late", Style::Fullscreen);
 
-	m_MainView.setCenter(resolution);
-	m_HudView.reset(FloatRect(0, 0, resolution.x, resolution.y));
+	m_MainView.setSize(resolution);
+	m_HudView.reset(FloatRect
+	(0, 0, resolution.x, resolution.y));
 
 	//Initialize splitscreen views
 	m_LeftView.setViewport(FloatRect(
@@ -24,7 +25,7 @@ Engine::Engine() {
 		0.001f, 0.001f, 0.498f, 0.998f));
 
 	m_BGRightView.setViewport(FloatRect(
-		0.5f, 0.001f, 0.599f, 0.998f));
+		0.5f, 0.001f, 0.499f, 0.998f));
 
 	m_BackgroundTexture = TextureHolder::
 		GetTexture("graphics/background.png");

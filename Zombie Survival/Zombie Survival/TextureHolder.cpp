@@ -7,7 +7,6 @@ TextureHolder* TextureHolder::m_s_Instance = nullptr;
 TextureHolder::TextureHolder() {
 	assert(m_s_Instance == nullptr);
 	m_s_Instance = this;
-	m_Textures;
 }
 
 sf::Texture& TextureHolder::GetTexture(std::string const& filename) {
